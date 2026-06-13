@@ -22,7 +22,7 @@ const CekPajak = () => {
 
     try {
       // Narik spesifik 1 data dari endpoint yang baru kita bikin
-      const response = await axios.get(`http://localhost:5000/api/kendaraan/cek/${platNomor}`);
+      const response = await axios.get(`https://sipakat-backend.vercel.app/api/kendaraan/cek/${platNomor}`);
       const kendaraanDitemukan = response.data;
 
       // Format rupiah biar rapi
@@ -68,7 +68,7 @@ const CekPajak = () => {
     if (layananTerpilih === 'Pengambilan STNK / TNKB') kodeLoket = 'D';
 
     try {
-      const response = await axios.post('http://localhost:5000/api/antrean', {
+      const response = await axios.post('https://sipakat-backend.vercel.app/api/antrean', {
         layanan: `${layananTerpilih} (Self-Service)`,
         kode_loket: kodeLoket 
       });

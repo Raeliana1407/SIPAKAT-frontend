@@ -24,7 +24,7 @@ const Home = ({ isLightMode, setIsLightMode }) => {
     if (layananTerpilih === 'Pengambilan STNK / TNKB') kodeLoket = 'D';
 
     try {
-      const response = await axios.post('http://localhost:5000/api/antrean', {
+      const response = await axios.post('https://sipakat-backend.vercel.app/api/antrean', {
         layanan: `${layananTerpilih} (Self-Service)`,
         kode_loket: kodeLoket 
       });

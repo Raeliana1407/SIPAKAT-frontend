@@ -39,7 +39,7 @@ const DashboardAdmin = () => {
   // --- API CALLS ---
   const ambilDataAntrean = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/antrean');
+      const response = await axios.get('https://sipakat-backend.vercel.app/api/antrean');
       setDaftarAntrean(response.data);
     } catch (error) {
       console.error('Gagal narik data antrean:', error);
@@ -48,7 +48,7 @@ const DashboardAdmin = () => {
 
   const ambilDataKendaraan = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/kendaraan');
+      const response = await axios.get('https://sipakat-backend.vercel.app/api/kendaraan');
       setDaftarKendaraan(response.data);
     } catch (error) {
       console.error('Gagal narik data kendaraan:', error);
@@ -58,7 +58,7 @@ const DashboardAdmin = () => {
   // --- FUNGSI ANTREAN ---
   const handleUpdateStatus = async (id, statusBaru) => {
     try {
-      await axios.put(`http://localhost:5000/api/antrean/${id}`, { status: statusBaru });
+      await axios.put(`https://sipakat-backend.vercel.app/api/antrean/${id}`, { status: statusBaru });
       ambilDataAntrean();
     } catch (error) {
       alert('Gagal update status antrean!');
@@ -67,7 +67,7 @@ const DashboardAdmin = () => {
 
   const handleTambahManual = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/antrean', {
+      const response = await axios.post('https://sipakat-backend.vercel.app/api/antrean', {
         layanan: 'Pembayaran Pajak (Manual)',
         kode_loket: 'A' 
       });
@@ -81,7 +81,7 @@ const DashboardAdmin = () => {
   const handleResetAntrean = async () => {
     if (window.confirm('Yakin mau mereset/menghapus semua history antrean hari ini?')) {
       try {
-        await axios.delete('http://localhost:5000/api/antrean/reset');
+        await axios.delete('https://sipakat-backend.vercel.app/api/antrean/reset');
         alert('History antrean berhasil dikosongkan!');
         ambilDataAntrean();
       } catch (error) {
@@ -123,11 +123,11 @@ const DashboardAdmin = () => {
 
       if (editId) {
         // Jalur Update (PUT)
-        const response = await axios.put(`http://localhost:5000/api/kendaraan/${editId}`, formData, config);
+        const response = await axios.put(`https://sipakat-backend.vercel.app/api/kendaraan/${editId}`, formData, config);
         alert(response.data.message || "Data berhasil diperbarui!");
       } else {
         // Jalur Tambah Baru (POST)
-        const response = await axios.post('http://localhost:5000/api/kendaraan', formData, config);
+        const response = await axios.post('https://sipakat-backend.vercel.app/api/kendaraan', formData, config);
         alert(response.data.message || "Data berhasil ditambahkan!");
       }
       
@@ -146,7 +146,7 @@ const DashboardAdmin = () => {
     if (window.confirm(`Yakin mau menghapus kendaraan dengan Nopol ${nopol} secara permanen?`)) {
       try {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://localhost:5000/api/kendaraan/${id}`, {
+        await axios.delete(`https://sipakat-backend.vercel.app/api/kendaraan/${id}`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         alert('Data kendaraan berhasil dihapus!');

@@ -19,7 +19,7 @@ const TungguAntrean = () => {
   useEffect(() => {
     const fetchStatusReal = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/antrean');
+        const response = await axios.get('https://sipakat-backend.vercel.app/api/antrean');
         const semuaAntrean = response.data;
         
         if (semuaAntrean.length === 0) {
